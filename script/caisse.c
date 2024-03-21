@@ -11,10 +11,24 @@ double calcule_monnaie(double montant_paye,double montant_du){
 	return montant_paye-montant_du;
 
 }
+
+void displayReturnedMoney(int* billet_a_rendre,int* billets, int* piece_a_rendre,double* pieces){
+	for(int i=0;i<7;i++)
+	{
+		if (billet_a_rendre[i]>0)
+				printf("il faut %d billet(s) de Rs%d\n",billet_a_rendre[i],billets[i]);
+	}
+	for(int i=0;i<7;i++)
+	{
+		if (piece_a_rendre[i]>0)
+				printf("il faut %d piece(s) de Rs%.2f\n",piece_a_rendre[i],pieces[i]);
+	}
+}
+
 int main()
 {
-	int billet[7]={2000,1000,500,200,100,50,25};
-	double piece[7]={20,10,5,1,0.5,0.2,0.05};
+	int billets[7]={2000,1000,500,200,100,50,25};
+	double pieces[7]={20,10,5,1,0.5,0.2,0.05};
 	int billet_a_rendre[7]={0,0,0,0,0,0,0};
 	int piece_a_rendre[7]={0,0,0,0,0,0,0};
 
@@ -38,9 +52,9 @@ int main()
 	{
 		for(int i=0;i<7;i++)
 		{
-			if(a_rendre-billet[i]>0)
+			if(a_rendre-billets[i]>0)
 			{
-				a_rendre-=billet[i];
+				a_rendre-=billets[i];
 				billet_a_rendre[i]+=1;
 				break;
 			}
@@ -51,16 +65,17 @@ int main()
 	{
 		for(int i=0;i<7;i++)
 		{
-			if(a_rendre-piece[i]>0)
+			if(a_rendre-pieces[i]>0)
 			{
-				a_rendre-=piece[i];
+				a_rendre-=pieces[i];
 				piece_a_rendre[i]+=1;
 				break;
 			}
 		}
 
 	}
-
+	displayReturnedMoney(billet_a_rendre,billets,piece_a_rendre,pieces);
+/*
 
 	for(int i=0;i<7;i++)
 	{
@@ -72,5 +87,5 @@ int main()
 	{
 		printf("%d",piece_a_rendre[i]);
 	}
-	printf("\n");
+	printf("\n");*/
 }
