@@ -16,12 +16,12 @@ void displayReturnedMoney(int* billet_a_rendre,int* billets, int* piece_a_rendre
 	for(int i=0;i<7;i++)
 	{
 		if (billet_a_rendre[i]>0)
-				printf("il faut %d billet(s) de Rs%d\n",billet_a_rendre[i],billets[i]);
+				printf("we need %d note(s) of Rs%d\n",billet_a_rendre[i],billets[i]);
 	}
 	for(int i=0;i<7;i++)
 	{
 		if (piece_a_rendre[i]>0)
-				printf("il faut %d piece(s) de Rs%.2f\n",piece_a_rendre[i],pieces[i]);
+				printf("we need %d coin(s) of Rs%.2f\n",piece_a_rendre[i],pieces[i]);
 	}
 }
 void displayStock(int* stock_billets, int*billets, int* stock_pieces, double* pieces )
@@ -31,6 +31,7 @@ void displayStock(int* stock_billets, int*billets, int* stock_pieces, double* pi
 		printf("Rs%d : %d\n",billets[i],stock_billets[i]);
 	for(int i=0;i<7;i++)
 		printf("Rs%.2f : %d\n",pieces[i],stock_pieces[i]);
+	printf("-----------------------------\n");
 }
 int checkStock(int* stock)
 {
@@ -67,17 +68,17 @@ int main()
 	{
 		double a_payer=round(alea(0,10000)*100)/100;
 
-		printf("Vous devez payer: Rs%.2f\n",a_payer);
+		printf("You have to pay: Rs%.2f\n",a_payer);
 
-		printf("Veuillez payer: ");
+		printf("Please insert money: ");
 		scanf("%lf",&montant_paye);
 		while(montant_paye<a_payer){
-			printf("Attention, montant insuffisant. Veuillez payer: ");
+			printf("Insufficient fund, please insert money: ");
 			scanf("%lf",&montant_paye);
 		}
-		printf("vous avez donne Rs.%.2f\n",montant_paye);
+		printf("You have inserted Rs.%.2f\n",montant_paye);
 		double a_rendre=calcule_monnaie(montant_paye,a_payer);
-		printf("Je dois vous rendre Rs%.2f\n",a_rendre);
+		printf("I will return back Rs%.2f\n",a_rendre);
 		int no_billet=0;
 		int no_piece=0;
 		while(a_rendre>25 && !no_billet)
@@ -128,17 +129,4 @@ int main()
 		displayReturnedMoney(billet_a_rendre,billets,piece_a_rendre,pieces);
 		displayStock(stock_billets,billets,stock_pieces,pieces);
 	}
-/*
-
-	for(int i=0;i<7;i++)
-	{
-		printf("%d",billet_a_rendre[i]);
-	}
-	printf("\n");
-
-	for(int i=0;i<7;i++)
-	{
-		printf("%d",piece_a_rendre[i]);
-	}
-	printf("\n");*/
 }
